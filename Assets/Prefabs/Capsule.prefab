@@ -122,4 +122,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallSpeed: 5
   rotationSpeed: 100
-  bottomBoundary: -10
+  bottomBoundary: -6

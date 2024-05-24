@@ -1,13 +1,12 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class FallingObjects : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
     [SerializeField] private int fallSpeed;
     [SerializeField] private int rotationSpeed;
     [SerializeField] private int bottomBoundary;
+    [SerializeField] private int saveDistance = -2;
 
     private void Update()
     {
@@ -19,20 +18,16 @@ public class FallingObjects : MonoBehaviour
         transform.Translate(0, -fallSpeed * Time.deltaTime, 0);
         transform.Rotate(Vector3.down, rotationSpeed * Time.deltaTime);
 
-        var distanceToBottom = transform.position.y - bottomBoundary;
-
+        if (transform.position.y <= saveDistance)
+        {
+            GameManager.Instance.isObjectInSaveDistance = true;
+        }
+        
         if (transform.position.y <= bottomBoundary)
         {
             Destroy(gameObject);
-            gameManager.remainLife--;
-            if (gameManager.remainLife <= 1 && distanceToBottom <= gameManager.saveDistance)
-            {
-                Time.timeScale = .2f;
-            }
-            else
-            {
-                Time.timeScale = 1;
-            }
+            GameManager.Instance.isObjectInSaveDistance = false;
+            GameManager.Instance.remainLife--;
         }
     }
 
@@ -41,7 +36,8 @@ public class FallingObjects : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             Destroy(gameObject);
-            gameManager.score++;
+            GameManager.Instance.isObjectInSaveDistance = false;
+            GameManager.Instance.score++;
         }
     }
 }

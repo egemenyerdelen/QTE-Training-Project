@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
@@ -21,6 +19,5 @@ public class ObjectSpawner : MonoBehaviour
         var spawnNumber = Random.Range(0, objectsToFall.Length);
 
         Instantiate(objectsToFall[spawnNumber], spawnPosition, Quaternion.identity);
-
     }
 }
