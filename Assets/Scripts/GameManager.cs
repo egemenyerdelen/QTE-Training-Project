@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     
-    public int score = 0;
+    public int score;
     public int remainLife = 3;
     public bool canSuperEnable;
     public bool isSuperActive;
@@ -22,7 +21,7 @@ public class GameManager : MonoBehaviour
         GameOver();
     }
 
-    public void GameOver()
+    private void GameOver()
     {
         if (remainLife <= 0)
         {
