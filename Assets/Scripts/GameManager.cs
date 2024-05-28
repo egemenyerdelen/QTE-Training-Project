@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         GameOver();
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         if (remainLife <= 0)
         {

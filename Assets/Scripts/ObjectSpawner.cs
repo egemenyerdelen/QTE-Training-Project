@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField] private int height = 8;
-    [SerializeField] private int width = 5;
+    [SerializeField] private int width = 2;
     [SerializeField] private int repeatInterval = 1;
     [SerializeField] private GameObject[] objectsToFall;
     
